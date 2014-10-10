@@ -1,0 +1,267 @@
+接口名称: SendMsgByNumber(String sysUserName,String sysPassword,List<String> phoneNoList,String content,String serviceId)
+接口功能: 向指定的一组手机号码发送短信 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	List<String> phoneNoList:目标手机号码列表
+	String content:短信内容
+	String serviceId:服务标识编号
+返回值:发送的批次编号(MassId)
+
+接口名称: QueryOnSendMsg(String sysUserName,String sysPassword,String massId,String serviceId)
+接口功能: 按批次查询发送短信信息 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String massId:发送的批次编号
+	String serviceId:服务标识编号
+返回值:发送的短信信息列表
+
+接口名称: CancelSendMsg(String sysUserName,String sysPassword,List<String> msgIdList)
+接口功能: 取消在发短信 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	List<String> msgIdList:短信编号列表
+返回值:
+            顺序对应的短信取消状态列表
+            取值：
+            0:取消成功；
+            1：短信正在发送中，无法取消；
+            2:短信已经发送成功，无法取消；
+            3：短信发送失败，无法取消；
+            4：短信已经取消过了；
+            5：要取消的短信数据不存在；
+            6：其他未知原因导致的取消失败
+            
+
+接口名称: GetAllMassid(String sysUserName,String sysPassword,Int32? status,String serviceNo)
+接口功能:
+            获取所有的群发短信id
+            
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	Int32? status:短信状态
+	String serviceNo:服务编号
+返回值:群发编号列表
+
+接口名称: QueryServiceInfos(String sysUserName,String sysPassword)
+接口功能: 查询全部短信服务信息 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+返回值:短信服务信息列表
+
+接口名称: QueryServiceInfosByService(String sysUserName,String sysPassword,Collections.Generic.IList{String} serviceIdList)
+接口功能:按服务编号查询服务信息 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	Collections.Generic.IList{String} serviceIdList:短信服务编号列表
+返回值:短信服务信息列表
+
+接口名称: QueryServiceInfosBySys(String sysUserName,String sysPassword,String belongSysId)
+接口功能:按系统编号查询服务信息
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String belongSysId:None
+返回值:短信服务信息列表
+
+接口名称: RegisterMsgService(String sysUserName,String sysPassword,String serviceNo,String sysno,String serviceName,String servicePrice,DateTime? activeTime,DateTime? abateTime)
+接口功能:新增短信服务
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String serviceNo:短信服务编号
+	String sysno:系统编号
+	String serviceName:服务名称
+	String servicePrice:服务价格
+	DateTime? activeTime:有效期
+	DateTime? abateTime:失效期
+返回值:新增短信结果
+
+接口名称: UnregisterMsgService(String sysUserName,String sysPassword,String serviceNo,DateTime? abateTime)
+接口功能:取消短信服务
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String serviceNo:短信服务编号
+	DateTime? abateTime:失效期
+返回值:取消短信结果
+
+接口名称: QuerySysInfos(String sysUserName,String sysPassword)
+接口功能:查询全部系统用户 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+返回值:全部系统用户信息
+
+接口名称: QuerySysInfo(String sysUserName,String sysPassword,String sysNo,Int32? status)
+接口功能:
+            查询系统用户信息
+            
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String sysNo:查询系统编号
+	Int32? status:查询系统状态
+返回值:符合条件的系统用户信息
+
+接口名称: AddSysInfo(String sysUserName,String sysPassword,String sysNo,String sysName,String userName,String passWord,Int32 Level)
+接口功能:添加系统用户
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String sysNo:系统编号
+	String sysName:系统描述
+	String userName:系统用户名
+	String passWord:系统登录密码
+	Int32 Level:系统权限
+返回值:添加的系统用户编号
+
+接口名称: CancelSysInfo(String sysUserName,String sysPassword,String sysNo)
+接口功能: 取消系统用户
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String sysNo:系统编号
+返回值:取消结果
+
+接口名称: UpdateSysInfo(String sysUserName,String sysPassword,String id,String sysName,String sysUser,String passWord,Int32 Level)
+接口功能:更新系统用户信息 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String id:系统编号
+	String sysName:系统描述
+	String sysUser:系统用户名称
+	String passWord:系统登录密码
+	Int32 Level:系统权限
+返回值:更新用户信息结果
+
+接口名称: OrderMsgService(String sysUserName,String sysPassword,String phoneNo,String serviceId)
+接口功能: 订阅短信服务 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String phoneNo:订阅者手机号码
+	String serviceId:服务编号
+返回值:如果操作成功则返回null，否则返回错误信息
+
+接口名称: CancelMsgService(String sysUserName,String sysPassword,String usId)
+接口功能: 取消订阅短信服务 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String usId:用户服务关系编号
+返回值:返回处理结果
+
+接口名称: QueryUserServiceInfo(String sysUserName,String sysPassword,String serviceId)
+接口功能: 查询指定服务的信息及订阅者列表 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String serviceId:短信服务编号
+返回值: 服务信息及订阅者列表
+
+接口名称: QueryUserServiceInfos(String sysUserName,String sysPassword,Int32 status)
+接口功能:根据状态获取全部用户服务关系 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	Int32 status:用户服务关系所处的状态
+返回值:符合相应状态的全部用户服务关系
+
+接口名称: QueryUserServiceInfosByPhoneNo(String sysUserName,String sysPassword,String phoneNo)
+接口功能: 查询指定号码订阅的短信服务信息信息 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String phoneNo:指定的手机号码
+返回值:指定的号码订阅的服务的列表
+
+接口名称: QueryUserServiceInfosByService(String sysUserName,String sysPassword,String phoneNo)
+接口功能:查询指定服务下的用户服务关系信息 
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String phoneNo:指定的服务编号
+返回值:指定服务信息下的服务的列表
+
+接口名称: QueryHistoryMsgInfo(String sysUserName,String sysPassword,String id)
+接口功能:
+            按短信编号获得历史记录
+            
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	String id:短信编号
+返回值:对应的历史记录
+
+接口名称: QueryHistoryMsgInfos(String sysUserName,String sysPassword,Int32? status,String massId,String serviceNo,String phoneNumber)
+接口功能:
+            按指定条件获得历史记录信息
+            
+参数列表:
+	String sysUserName:系统用户名
+	String sysPassword:系统登录密码
+	Int32? status:短信发送状态
+	String massId:群发标记
+	String serviceNo:服务编号
+	String phoneNumber:电话号码
+返回值:符合条件的历史记录信息
+
+接口名称: M:MsgService.DLL.#ctor(String factoryName,String dataSource)
+接口功能:
+            连接数据库
+            
+参数列表:
+	String factoryName:None
+	String dataSource:数据源
+
+接口名称: M:MsgService.DLL.SendMsgByNumber(List<String> receiverList,String content,String serviceNo)
+接口功能:
+            按号码发送短信
+            
+参数列表:
+	List<String> receiverList:接收者号码列表
+	String content:短信内容
+	String serviceNo:短信服务编号
+返回值:None
+
+接口名称: M:MsgService.DLL.QueryOnSendMsg(String massId,String serviceNo)
+接口功能:
+            查询正在发送的短信列表
+            
+参数列表:
+	String massId:群发标记
+	String serviceNo:服务编号
+返回值:None
+
+接口名称: M:MsgService.DLL.CancelSendMsg(List<String> msgIdList)
+接口功能: 取消正在发送的短信 
+参数列表:
+	List<String> msgIdList:需要取消的短信编号
+返回值:
+            顺序对应的短信取消状态列表
+            取值：
+            0:取消成功；
+            1：短信正在发送中，无法取消；
+            2: 短信已经发送成功，无法取消；
+            3：短信发送失败，无法取消；
+            4：短信已经取消过了；
+            5：要取消的短信数据不存在；
+            6：其他未知原因导致的取消失败
+            
+
+接口名称: M:MsgService.DLL.GetAllMassid(Int32? status,String serviceNo)
+接口功能:
+            获取指定条件短信的massid
+            
+参数列表:
+	Int32? status:待查询短信状态
+	String serviceNo:待查询短信服务代码
+返回值:全部的massid
+

@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MsgService</name>
+    </assembly>
+    <members>
+        <member name="M:MsgService.IMsgService.SendMsgByNumber(System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary> 向指定的一组手机号码发送短信 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="phoneNoList">目标手机号码列表</param>
+            <param name="content">短信内容</param>
+            <param name="serviceId">服务标识编号</param>
+            <returns>发送的批次编号(MassId)</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryOnSendMsg(System.String,System.String,System.String,System.String)">
+            <summary> 按批次查询发送短信信息 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="massId">发送的批次编号</param>
+            <param name="serviceId">服务标识编号</param>
+            <returns>发送的短信信息列表</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.CancelSendMsg(System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary> 取消在发短信 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="msgIdList">短信编号列表</param>
+            <returns>
+            顺序对应的短信取消状态列表
+            取值：
+            0:取消成功；
+            1：短信正在发送中，无法取消；
+            2:短信已经发送成功，无法取消；
+            3：短信发送失败，无法取消；
+            4：短信已经取消过了；
+            5：要取消的短信数据不存在；
+            6：其他未知原因导致的取消失败
+            </returns>
+        </member>
+        <member name="M:MsgService.IMsgService.GetAllMassid(System.String,System.String,System.Nullable{System.Int32},System.String)">
+            <summary>
+            获取所有的群发短信id
+            </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="status">短信状态</param>
+            <param name="serviceNo">服务编号</param>
+            <returns>群发编号列表</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryServiceInfos(System.String,System.String)">
+            <summary> 查询全部短信服务信息 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <returns>短信服务信息列表</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryServiceInfosByService(System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <summary>按服务编号查询服务信息 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="serviceIdList">短信服务编号列表</param>
+            <returns>短信服务信息列表</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryServiceInfosBySys(System.String,System.String,System.String,System.Int32)">
+            <summary>按系统编号查询服务信息</summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="belongSysId"></param>
+            <returns>短信服务信息列表</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.RegisterMsgService(System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>新增短信服务</summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="serviceNo">短信服务编号</param>
+            <param name="sysno">系统编号</param>
+            <param name="serviceName">服务名称</param>
+            <param name="servicePrice">服务价格</param>
+            <param name="activeTime">有效期</param>
+            <param name="abateTime">失效期</param>
+            <returns>新增短信结果</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.UnregisterMsgService(System.String,System.String,System.String,System.Nullable{System.DateTime})">
+            <summary>取消短信服务</summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="serviceNo">短信服务编号</param>
+            <param name="abateTime">失效期</param>
+            <returns>取消短信结果</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QuerySysInfos(System.String,System.String)">
+            <summary>查询全部系统用户 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <returns>全部系统用户信息</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QuerySysInfo(System.String,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            查询系统用户信息
+            </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="sysNo">查询系统编号</param>
+            <param name="status">查询系统状态</param>
+            <returns>符合条件的系统用户信息</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.AddSysInfo(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>添加系统用户</summary>
+            /// <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="sysNo">系统编号</param>
+            <param name="sysName">系统描述</param>
+            <param name="userName">系统用户名</param>
+            <param name="passWord">系统登录密码</param>
+            <param name="Level">系统权限</param>
+            <returns>添加的系统用户编号</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.CancelSysInfo(System.String,System.String,System.String)">
+            <summary> 取消系统用户</summary>
+            /// <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="sysNo">系统编号</param>
+            <returns>取消结果</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.UpdateSysInfo(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>更新系统用户信息 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="id">系统编号</param>
+            <param name="sysName">系统描述</param>
+            <param name="sysUser">系统用户名称</param>
+            <param name="passWord">系统登录密码</param>
+            <param name="Level">系统权限</param>
+            <returns>更新用户信息结果</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.OrderMsgService(System.String,System.String,System.String,System.String)">
+            <summary> 订阅短信服务 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="phoneNo">订阅者手机号码</param>
+            <param name="serviceId">服务编号</param>
+            <returns>如果操作成功则返回null，否则返回错误信息</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.CancelMsgService(System.String,System.String,System.String)">
+            <summary> 取消订阅短信服务 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="usId">用户服务关系编号</param>
+            <returns>返回处理结果</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryUserServiceInfo(System.String,System.String,System.String)">
+            <summary> 查询指定服务的信息及订阅者列表 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="serviceId">短信服务编号</param>
+            <returns> 服务信息及订阅者列表</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryUserServiceInfos(System.String,System.String,System.Int32)">
+            <summary>根据状态获取全部用户服务关系 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="status">用户服务关系所处的状态</param>
+            <returns>符合相应状态的全部用户服务关系</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryUserServiceInfosByPhoneNo(System.String,System.String,System.String,System.Int32)">
+            <summary> 查询指定号码订阅的短信服务信息信息 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="phoneNo">指定的手机号码</param>
+            <returns>指定的号码订阅的服务的列表</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryUserServiceInfosByService(System.String,System.String,System.String,System.Int32)">
+            <summary>查询指定服务下的用户服务关系信息 </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="phoneNo">指定的服务编号</param>
+            <returns>指定服务信息下的服务的列表</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryHistoryMsgInfo(System.String,System.String,System.String)">
+            <summary>
+            按短信编号获得历史记录
+            </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="id">短信编号</param>
+            <returns>对应的历史记录</returns>
+        </member>
+        <member name="M:MsgService.IMsgService.QueryHistoryMsgInfos(System.String,System.String,System.Nullable{System.Int32},System.String,System.String,System.String)">
+            <summary>
+            按指定条件获得历史记录信息
+            </summary>
+            <param name="sysUserName">系统用户名</param>
+            <param name="sysPassword">系统登录密码</param>
+            <param name="status">短信发送状态</param>
+            <param name="massId">群发标记</param>
+            <param name="serviceNo">服务编号</param>
+            <param name="phoneNumber">电话号码</param>
+            <returns>符合条件的历史记录信息</returns>
+        </member>
+        <member name="M:MsgService.DLL.#ctor(System.String,System.String)">
+            <summary>
+            连接数据库
+            </summary>
+            <param name="factoryName"></param>
+            <param name="dataSource">数据源</param>
+        </member>
+        <member name="M:MsgService.DLL.SendMsgByNumber(System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            按号码发送短信
+            </summary>
+            <param name="receiverList">接收者号码列表</param>
+            <param name="content">短信内容</param>
+            <param name="serviceNo">短信服务编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:MsgService.DLL.QueryOnSendMsg(System.String,System.String)">
+            <summary>
+            查询正在发送的短信列表
+            </summary>
+            <param name="massId">群发标记</param>
+            <param name="serviceNo">服务编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:MsgService.DLL.CancelSendMsg(System.Collections.Generic.List{System.String})">
+            <summary> 取消正在发送的短信 </summary>
+            <param name="msgIdList">需要取消的短信编号</param>
+            <returns>
+            顺序对应的短信取消状态列表
+            取值：
+            0:取消成功；
+            1：短信正在发送中，无法取消；
+            2: 短信已经发送成功，无法取消；
+            3：短信发送失败，无法取消；
+            4：短信已经取消过了；
+            5：要取消的短信数据不存在；
+            6：其他未知原因导致的取消失败
+            </returns>
+        </member>
+        <member name="M:MsgService.DLL.GetAllMassid(System.Nullable{System.Int32},System.String)">
+            <summary>
+            获取指定条件短信的massid
+            </summary>
+            <param name="status">待查询短信状态</param>
+            <param name="serviceNo">待查询短信服务代码</param>
+            <returns>全部的massid</returns>
+        </member>
+    </members>
+</doc>
